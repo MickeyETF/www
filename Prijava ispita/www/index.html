@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+		
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <title>
+        </title>
+        <link rel="stylesheet" href="https://s3.amazonaws.com/codiqa-cdn/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+         <link rel="stylesheet" href="jquery.mobile-1.2.0.min.css" />
+        <script src="https://s3.amazonaws.com/codiqa-cdn/jquery-1.7.2.min.js">
+        </script>
+		<script src="phonegap.js"></script>
+        <script src="https://s3.amazonaws.com/codiqa-cdn/mobile/1.2.0/jquery.mobile-1.2.0.min.js">
+        </script>
+    </head>
+   <body>
+        <!-- Home -->
+        <div data-role="page" id="page1">
+            <div class="header" id="reg_header" data-theme="b" data-role="header">
+                <h3 id="reg">
+                    Registracija
+                </h3>
+            </div>
+            <div data-role="content">
+                <h4>
+                    U sledeća polja upišite podatke za logovanje na InfoKiosk. Ukoliko niste
+            registrovani odaberite link ispod.
+                </h4>
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup">
+                        <label for="korisnicko_ime">
+                            Korisničko Ime
+                        </label>
+                        <input name="korisnicko_ime" id="korisnicko_ime" placeholder="Unesite ime.." value="" type="text" />
+                    </fieldset>
+                </div>
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup">
+                        <label for="lozinka">
+                            Lozinka
+                        </label>
+                        <input name="lozinka" id="lozinka" placeholder="Unesite lozinku.." value="" type="text" />
+                    </fieldset>
+                </div>
+                <a class="button" id="unos" data-role="button" data-theme="b" href="#" onclick="UnosPodataka()">
+                    Unesi
+                </a>
+                <div>
+                    <a class="link" id="infokiosk" href="https://infokiosk.unssa.rs.ba/" data-transition="fade">
+                        InfoKiosk
+                    </a>
+                </div>
+            </div>
+        </div>
+		<script>
+    function UnosPodataka()
+    { 
+    var korisnicko_ime=document.getElementById("korisnicko_ime").value;
+    var lozinka=document.getElementById("lozinka").value;
+    if(korisnicko_ime!=""&& lozinka!="")
+    {
+    window.localStorage.setItem("korisnicko_ime", korisnicko_ime);
+    window.localStorage.setItem("lozinka", lozinka);
+    window.location.replace("pocetna.html");
+    }
+    }
+    window.onload=function()
+    {
+    	 var korisnicko_ime = window.localStorage.getItem("korisnicko_ime");
+    	 var lozinka = window.localStorage.getItem("lozinka");
+    	if(korisnicko_ime!=null || lozinka!=null)
+    	{	
+    	window.location.replace('pocetna.html');
+    	}
+    	
+    }
+	</script>
+    </body>
+</html>
