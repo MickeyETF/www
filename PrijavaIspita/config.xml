@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget>
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>Prijava Ispita</name>
+
+    <description>
+        Slanje smsa phone gap app
+    </description>
+
+    <author href="#" email="m.milicevic.etf@gmail.com">
+        Milan Milicevic
+    </author>
+    <access origin="*" />
+
+</widget>
