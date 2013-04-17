@@ -13,7 +13,7 @@
         </script>
 		<script src="phonegap.js"></script>
         <script src="https://s3.amazonaws.com/codiqa-cdn/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
-		
+		<script src="downloadFajlova.js"></script>
         
     </head>
     <body onload="loadingAjax();">
@@ -25,58 +25,44 @@
                     Nazad
                 </a>
                 <h3>
-                    Spisak ispita
+                    Status studenta
                 </h3>
             </div>
-            <div data-role="content" id="polozeni_ispiti">
+            <div data-role="content" >
 			<img id="loading-image" src="images/ajax-loader.gif"/>
-			<table id="List">
-				<thead><tr><td>RB</td><td>Naziv predmeta</td><td></td></tr></thead>				
-				</table>
-			</div>
+			<div id="status_studenta"></div>
         </div>
 		<script>
 			function loadingAjax()
 			{
 				var korisnicko_ime = window.localStorage.getItem("korisnicko_ime");
 				var lozinka = window.localStorage.getItem("lozinka");
-				var adresa="http://wstest.etf.unssa.rs.ba/studenti/ispiti/etf/"+korisnicko_ime+"/"+lozinka;
-				
+				var adresa="http://wstest.etf.unssa.rs.ba/studenti/status/etf/"+korisnicko_ime+"/"+lozinka;
 				$.ajax({
-				  //url:"http://wstest.etf.unssa.rs.ba/studenti/ispiti/etf/931/ed448b3761b35affa0409afa2aaf09d8",
+				  //url:"http://wstest.etf.unssa.rs.ba/studenti/status/etf/931/ed448b3761b35affa0409afa2aaf09d8",
 				  url:adresa,
 				  type:"GET",
 				  crossDomain: true,
 				  dataType:"jsonp",
 				  beforeSend: function() {
-				  $("#List").hide();
 				  $("#loading-image").show();
 				   },
 				  success: function(data)
 				  {
 				   $("#loading-image").hide();
-				   $("#List").show();
-					//console.log(data);
+					console.log(data);
 					//$("#polozeni_ispiti").html(JSON.stringify(data));
-					var i=1;
 					$.each(data, function(index, item)
 					{
-						 console.log(item.Ispit.id);
-						  var id_ispita=item.Ispit.id;
-						 $('#List').append('<tr><td>'+i+'</td><td>'+item.Ispit.naziv+'</td><td><button id="'+id_ispita+'" onclick="Prijava(this.id,this.value)" value="prijava" >prijava</button></td></tr>');
-						 i++;
+						 $('#status_studenta').append('<h4>'+ item.Student.ime+" "+"("+item.Student.ime_rod+")"+" "+item.Student.prezime +'</h4>'+'<br/>'+'<h5>Smjer:'+item.Student.smjer+'</h5>'+'<h5>Status:'+item.Student.status+'</h5>'+'<h5>Finansiranje:'+item.Student.finansiranje+'</h5>');
 					});
 				  }
 				});
 			}
-			function Prijava(a,b)
+			function Poz()
 			{
-			var korisnicko_ime = window.localStorage.getItem("korisnicko_ime");
-			var lozinka = window.localStorage.getItem("lozinka");
-			var poruka="etf#" + korisnicko_ime + "#" + lozinka + "#" + b + "#" + a;	
-			var contactno="066683969";
-			alert(poruka);
-			window.location.href = "sms:"+contactno+"?body="+poruka;			
+			alert("Prijavljuje se");
+			
 			}
 </script>
     </body>

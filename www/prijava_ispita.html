@@ -61,7 +61,6 @@
 					var i=1;
 					$.each(data, function(index, item)
 					{
-						 console.log(item.Ispit.id);
 						  var id_ispita=item.Ispit.id;
 						 $('#List').append('<tr><td>'+i+'</td><td>'+item.Ispit.naziv+'</td><td><button id="'+id_ispita+'" onclick="Prijava(this.id,this.value)" value="prijava" >prijava</button></td></tr>');
 						 i++;
@@ -73,7 +72,7 @@
 			{
 			var korisnicko_ime = window.localStorage.getItem("korisnicko_ime");
 			var lozinka = window.localStorage.getItem("lozinka");
-			var poruka="etf#" + korisnicko_ime + "#" + lozinka + "#" + b + "#" + a;	
+			var poruka="etf"+"#" + korisnicko_ime + "#" + lozinka + "#" + b + "#" + a;	
 			var contactno="066683969";
 			alert(poruka);
 			window.location.href = "sms:"+contactno+"?body="+poruka;			
