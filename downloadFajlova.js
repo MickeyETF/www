@@ -26,7 +26,7 @@ alert("application dir is ready");
  
  
 downloadFile = function(br_ind,loz){
- 
+ alert("poziva se download"+br_ind+loz)
 var fileTransfer = new FileTransfer();
 var url = new Array();
  	url[0] = "http://wstest.etf.unssa.rs.ba/studenti/nepolozeni_ispiti/etf/"+br_ind+"/"+loz;
@@ -44,17 +44,17 @@ var url = new Array();
 		{
 			var adresa=url[i];
 			var ime_fajla=url[i]; 
-   alert(adresa);
-   var filePath = window.appRootDir.fullPath + ime_fajla;
-   fileTransfer.download(
-   adresa,
-   filePath,
-   function(entry) {
-   alert("download complete: " + entry.fullPath);
-   },
-   function(error) {
-   alert("download error" + error.source);
-   }
-   );
-		}
+			   alert(adresa);
+			   var filePath = window.appRootDir.fullPath + ime_fajla;
+			   fileTransfer.download(
+			   adresa,
+			   filePath,
+			   function(entry) {
+			   alert("download complete: " + entry.fullPath);
+			   },
+			   function(error) {
+			   alert("download error" + error.source);
+			   }
+			   );
+			}
 }
