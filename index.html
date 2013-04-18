@@ -184,8 +184,6 @@
 	function DownloadFajlova(br_ind,loz)
 	{
 		alert("izvrsava se Download Fajlova");
-		alert(br_ind);
-		alert(loz);
 		var url = new Array();
 		url[0] = "http://wstest.etf.unssa.rs.ba/studenti/nepolozeni_ispiti/etf/"+br_ind+"/"+loz;
 		url[1] = "http://wstest.etf.unssa.rs.ba/studenti/polozeni_ispiti/etf/"+br_ind+"/"+loz;
@@ -202,6 +200,8 @@
 		{
 		var adresa=url[i];
 		var ime_fajla=file[i];
+		alert(adresa);
+		alert(ime_fajla);
 		var fileTransfer = new FileTransfer();
 		var filePath = window.appRootDir.fullPath + ime_fajla;
 		fileTransfer.download(
