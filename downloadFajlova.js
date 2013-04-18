@@ -1,11 +1,5 @@
 	window.appRootDirName = "prijava_ispita";
-	document.addEventListener("deviceready", onDeviceReady, false);
-	 
-	function onDeviceReady() 
-	{
-	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
-	}
-	 
+	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);	 
 	function fail() {
 	alert("failed to get filesystem");
 	}
@@ -47,6 +41,7 @@
 			
 			var fileTransfer = new FileTransfer();
 			var filePath = window.appRootDir.fullPath + ime_fajla;
+			alert(filePath);
 			fileTransfer.download(
 			adresa,
 			filePath,
