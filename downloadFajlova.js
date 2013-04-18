@@ -27,7 +27,7 @@ alert("application dir is ready");
  
 downloadFile = function(br_ind,loz){
  alert("poziva se download"+br_ind+loz)
-var fileTransfer = new FileTransfer();
+
 var url = new Array();
  	url[0] = "http://wstest.etf.unssa.rs.ba/studenti/nepolozeni_ispiti/etf/"+br_ind+"/"+loz;
 		url[1] = "http://wstest.etf.unssa.rs.ba/studenti/polozeni_ispiti/etf/"+br_ind+"/"+loz;
@@ -41,7 +41,8 @@ var url = new Array();
 		file[3] = "/status_studenta.json";
 		
 		for(var i=0;i<4;i++)
-		{
+		{	
+			var fileTransfer = new FileTransfer();
 			var adresa=url[i];
 			var ime_fajla=url[i]; 
 			   alert(adresa);
