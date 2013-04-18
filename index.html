@@ -84,61 +84,12 @@
     	if(korisnicko_ime!=null && lozinka!=null)
     	{	
     	window.location.replace('pocetna.html');
-		downloadFile(korisnicko_ime,md5_lozinka);
+	downloadFile(korisnicko_ime,md5_lozinka);
     	}
 		
     	
     }
     
-    	window.appRootDirName = "prijava_ispita";
-	document.addEventListener("deviceready", onDeviceReady, false);
-	 
-	function onDeviceReady() 
-	{
-	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
-	}
-	 
-	function fail() {
-	alert("failed to get filesystem");
-	}
-	 
-	function gotFS(fileSystem) {
-	alert("filesystem got");
-	window.fileSystem = fileSystem;
-	fileSystem.root.getDirectory(window.appRootDirName, {
-	create : true,
-	exclusive : false
-	}, dirReady, fail);
-	}
-	 
-	function dirReady(entry) {
-	window.appRootDir = entry;
-	alert("application dir is ready");
-	}
-	
-	//funkcije za pristup file sistemu
-		window.appRootDirName = "prijava_ispita";
-		function fail() 
-		{
-		alert("failed to get filesystem");
-		}
-		 
-		function gotFS(fileSystem) 
-		{
-		window.fileSystem = fileSystem;
-		fileSystem.root.getDirectory(window.appRootDirName, {
-		create : true,
-		exclusive : false
-		}, dirReady, fail);
-		}
-		 
-		function dirReady(entry)
-		{
-		window.appRootDir = entry;
-		}
-	//__________________________________________________________________________	
-	
-	
 	//funkcija za dobavljanje indexa i lozinke iz polja i vrsi md5 lozinke i poziv funkcije loadingAjax()
 	function Enkripcija()
 	{
