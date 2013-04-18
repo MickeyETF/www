@@ -72,10 +72,11 @@
 			{
 			var korisnicko_ime = window.localStorage.getItem("korisnicko_ime");
 			var lozinka = window.localStorage.getItem("lozinka");
-			var poruka="etf" + korisnicko_ime  + lozinka  + b  + a;	
+			//var poruka="etf#" + korisnicko_ime + "#" + lozinka + "#" + b + "#" + a;
+			var poruka="Ovo je # neka # poruka";
 			var contactno="066683969";
 			alert(poruka);
-			window.location.href = "sms:"+contactno+"?body="+ poruka.toString();			
+			window.location.href = "sms:"+contactno+"?body="+ poruka;			
 			}
 </script>
     </body>
