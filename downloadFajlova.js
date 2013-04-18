@@ -26,7 +26,7 @@ alert("application dir is ready");
  
  
 downloadFile = function(br_ind,loz){
- alert("poziva se download"+br_ind+loz)
+ alert("poziva se download"+br_ind+" "+loz)
 
 var url = new Array();
  	url[0] = "http://wstest.etf.unssa.rs.ba/studenti/nepolozeni_ispiti/etf/"+br_ind+"/"+loz;
