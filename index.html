@@ -15,6 +15,7 @@
 		<script src="phonegap.js"></script>
         <script src="https://s3.amazonaws.com/codiqa-cdn/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
         <script src="md5.js"></script>
+		<script src="downloadFajlova.js"></script>
     </head>
    <body>
         <!-- Home -->
@@ -66,7 +67,7 @@
             <div data-role="content">
 			<img id="loading-image" src="images/ajax-loader.gif"/>
 				<div id="poruka"></div>
-				<a id="ok" data-role="button" data-theme="b"  onclick="UnosPodataka();DownloadFajlova(korisnicko_ime,md5_lozinka)">OK</a>
+				<a id="ok" data-role="button" data-theme="b"  onclick="UnosPodataka();downloadFile(korisnicko_ime,md5_lozinka);">OK</a>
 				<a id="nazad" data-role="button" data-theme="b"  onclick="javascript:window.location.replace('index.html');">Nazad</a>
             </div>
         </div>
@@ -83,8 +84,7 @@
     	if(korisnicko_ime!=null && lozinka!=null)
     	{	
     	window.location.replace('pocetna.html');
-		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
-		DownloadFajlova(korisnicko_ime,md5_lozinka);
+		downloadFile(korisnicko_ime,md5_lozinka);
     	}
 		
     	
@@ -180,48 +180,6 @@
 		window.localStorage.setItem("lozinka", md5_lozinka);
 		window.location.replace('pocetna.html');
     }
-	
-	function DownloadFajlova(br_ind,loz)
-	{
-		alert("izvrsava se Download Fajlova");
-		var url = new Array();
-		url[0] = "http://wstest.etf.unssa.rs.ba/studenti/nepolozeni_ispiti/etf/"+br_ind+"/"+loz;
-		url[1] = "http://wstest.etf.unssa.rs.ba/studenti/polozeni_ispiti/etf/"+br_ind+"/"+loz;
-		url[2] = "http://wstest.etf.unssa.rs.ba/studenti/ispiti/etf/"+br_ind+"/"+loz;
-		url[3] = "http://wstest.etf.unssa.rs.ba/studenti/status/etf/"+br_ind+"/"+loz;
-		
-		var file = new Array();
-		file[0] = "/nepolozeni_ispiti.json";
-		file[1] = "/polozeni_ispiti.json";
-		file[2] = "/ispiti_za_polaganje.json";
-		file[3] = "/status_studenta.json";
-		
-		for(var i=0;i<4;i++)
-		{
-		var adresa=url[i];
-		var ime_fajla=file[i];
-		alert(adresa);
-		alert(ime_fajla);
-		var fileTransfer = new FileTransfer();
-		var filePath = window.appRootDir.fullPath + ime_fajla;
-		fileTransfer.download(
-		adresa,
-		filePath,
-			function(entry) {
-			alert("download complete: " + entry.fullPath);
-			},
-				function(error) {
-				alert("download error" + error.source);
-				}
-			);
-		
-		
-		}
-   
-	}
-	
-	
-	
 	
 	</script>
     </body>
