@@ -1,3 +1,30 @@
+	window.appRootDirName = "prijava_ispita";
+	document.addEventListener("deviceready", onDeviceReady, false);
+	 
+	function onDeviceReady() 
+	{
+	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+	}
+	 
+	function fail() {
+	alert("failed to get filesystem");
+	}
+	 
+	function gotFS(fileSystem)
+	{
+	alert("filesystem got");
+	window.fileSystem = fileSystem;
+	fileSystem.root.getDirectory(window.appRootDirName, {
+	create : true,
+	exclusive : false
+	}, dirReady, fail);
+	}
+	 
+	function dirReady(entry) {
+	window.appRootDir = entry;
+	alert("application dir is ready");
+	}
+	 
 	 
 	downloadFile = function(br_ind,loz)
 	{
@@ -17,7 +44,7 @@
 		{
 			var adresa=url[i];
 			var ime_fajla=url[i];
-			alert(adresa);
+			
 			var fileTransfer = new FileTransfer();
 			var filePath = window.appRootDir.fullPath + ime_fajla;
 			fileTransfer.download(
