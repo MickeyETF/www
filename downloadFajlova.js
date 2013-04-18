@@ -43,7 +43,7 @@
 		{
 			var adresa=url[i];
 			var ime_fajla=url[i];
-			
+			alert(adresa);
 			var fileTransfer = new FileTransfer();
 			var filePath = window.appRootDir.fullPath + ime_fajla;
 			fileTransfer.download(
