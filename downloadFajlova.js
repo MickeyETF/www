@@ -25,7 +25,7 @@ alert("application dir is ready");
 }
  
  
-downloadFile = function(){
+downloadFile = function(br_ind,loz){
  
 var fileTransfer = new FileTransfer();
 var url = new Array();
