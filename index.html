@@ -67,7 +67,7 @@
             <div data-role="content">
 			<img id="loading-image" src="images/ajax-loader.gif"/>
 				<div id="poruka"></div>
-				<a id="ok" data-role="button" data-theme="b"  onclick="UnosPodataka();downloadFile(korisnicko_ime,md5_lozinka);">OK</a>
+				<a id="ok" data-role="button" data-theme="b"  onclick="UnosPodataka();">OK</a>
 				<a id="nazad" data-role="button" data-theme="b"  onclick="javascript:window.location.replace('index.html');">Nazad</a>
             </div>
         </div>
@@ -83,9 +83,7 @@
 		var md5_lozinka="";
     	if(korisnicko_ime!=null && lozinka!=null)
     	{
-    	downloadFile(korisnicko_ime,lozinka);
     	window.location.replace('pocetna.html');
-    	
     	}
 		
     	
