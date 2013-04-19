@@ -82,9 +82,10 @@
     	var lozinka = window.localStorage.getItem("lozinka");
 		var md5_lozinka="";
     	if(korisnicko_ime!=null && lozinka!=null)
-    	{	
-    	window.location.replace('pocetna.html');
+    	{
     	downloadFile(korisnicko_ime,lozinka);
+    	window.location.replace('pocetna.html');
+    	
     	}
 		
     	
