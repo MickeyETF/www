@@ -4,6 +4,14 @@ document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
 alert("device is ready");
 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+var korisnicko_ime = window.localStorage.getItem("korisnicko_ime");
+var lozinka = window.localStorage.getItem("lozinka");
+var md5_lozinka="";
+if(korisnicko_ime!=null && lozinka!=null)
+	{
+    	downloadFile(korisnicko_ime,lozinka);
+    	window.location.replace('pocetna.html');
+   	}
 }
  
 function fail() {
