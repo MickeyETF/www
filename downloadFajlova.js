@@ -4,7 +4,6 @@ document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
 alert("device is ready");
 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
-downloadFile(korisnicko_ime,md5_lozinka);
 }
  
 function fail() {
