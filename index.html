@@ -15,6 +15,7 @@
 		<script src="phonegap.js"></script>
         <script src="https://s3.amazonaws.com/codiqa-cdn/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
         <script src="md5.js"></script>
+		<script src="downloadFajlova.js"></script>
     </head>
    <body>
         <!-- Home -->
@@ -65,8 +66,8 @@
             </div>
             <div data-role="content">
 			<img id="loading-image" src="images/ajax-loader.gif"/>
-				<div id="poruka"></div>
-				<a id="ok" data-role="button" data-theme="b"  onclick="downloadFile(korisnicko_ime,md5_lozinka);UnosPodataka();">OK</a>
+				<table id="poruka"></table>
+				<a id="ok" data-role="button" data-theme="b"  onclick="UnosPodataka();downloadFile(korisnicko_ime,md5_lozinka);">OK</a>
 				<a id="nazad" data-role="button" data-theme="b"  onclick="javascript:window.location.replace('index.html');">Nazad</a>
             </div>
         </div>
@@ -74,15 +75,14 @@
 		
 	<script type="text/javascript">
 	//inicijalna funkcija 
-window.onload=function()
+	window.onload=function()
     {
 		
     	var korisnicko_ime = window.localStorage.getItem("korisnicko_ime");
     	var lozinka = window.localStorage.getItem("lozinka");
 		var md5_lozinka="";
     	if(korisnicko_ime!=null && lozinka!=null)
-    	{
-    	downloadFile(korisnicko_ime,lozinka);
+    	{	
     	window.location.replace('pocetna.html');
     	}
 		
@@ -119,16 +119,16 @@ window.onload=function()
 						$("#loading-image").hide();
 						if(data!="")
 						{
+						//$('#poruka').apend(<img src="images/ok.png"/>);
 						$("#ok").css({display: "block"});
-						
 						$.each(data, function(index, item)
 						{
-						$('#poruka').html("Uspjesno ste logovani. Vase ime i prezime je:"+ item.Student.ime+" "+item.Student.prezime);
+						$('#poruka').html('<tr><td><img src="images/ok.png"/></td><td>Uspješno ste logovani. Vaše ime i prezime je:'+ item.Student.ime+' '+item.Student.prezime+'</td></tr>');
 						});
 						}
 						else
 						{
-						$('#poruka').html("Podaci nisu validni");
+						$('#poruka').html('<tr><td><img src="images/error.png"/></td><td>Podaci nisu validni</td></tr>');
 						$("#nazad").css({display: "block"});
 						}
 						
@@ -140,11 +140,11 @@ window.onload=function()
 					$("#nazad").css({display: "block"});
 						if(error=="timeout")
 						{
-							$('#poruka').html("Greska u komunikaciji sa serverom provjerite internet konekciju");
+							$('#poruka').html('<tr><td><img src="images/warning.png"/></td><td>Greska u komunikaciji sa serverom provjerite internet konekciju</td></tr>');
 						}
 						else
 						{
-							$('#poruka').html("Doslo je do greske");
+							$('#poruka').html('<tr><td><img src="images/error.png"/></td><td>Doslo je do greške</td></tr>');
 						}
 					}
 					});
