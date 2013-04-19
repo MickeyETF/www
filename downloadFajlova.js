@@ -9,7 +9,11 @@ var lozinka = window.localStorage.getItem("lozinka");
 var md5_lozinka="";
 if(korisnicko_ime!=null && lozinka!=null)
 	{
+	$("html").css('opacity', 0.5);
+	$("#loading-image").show();
     	downloadFile(korisnicko_ime,lozinka);
+    	$("html").css('opacity', 1.0);
+    	$("#loading-image").hide();
     	window.location.replace('pocetna.html');
    	}
 }
